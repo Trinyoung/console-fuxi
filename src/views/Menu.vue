@@ -17,11 +17,13 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
+const data = ref([]);
 </script>
 <style lang="scss" scoped>
 .container {
   background: #fff;
   height: 100%;
+  padding: 5px;
 }
 </style>

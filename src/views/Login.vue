@@ -2,7 +2,7 @@
   <div class="container">
     <div class="form-container">
       <div class="title">伏 羲</div>
-      <el-form v-model="form" ref="formRef">
+      <el-form :model="form" ref="formRef">
         <el-form-item label="账号" prop="username">
           <el-input placeholder="请输入账号" v-model="form.username"></el-input>
         </el-form-item>
@@ -14,7 +14,7 @@
           ></el-input>
         </el-form-item>
         <div>
-          <el-button type="primary" @click="login" style="width: 200px"
+          <el-button type="primary" @click="loginServ" style="width: 200px"
             >登录</el-button
           >
         </div>
@@ -26,18 +26,22 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import type { FormInstance, FormRules } from "element-plus";
-
-const form = ref({
+import { LoginParams } from "@/types/user";
+import { login, register } from "@/api/common";
+// import {} from '@/api/'
+const form = ref<LoginParams>({
   username: "",
   password: "",
 });
 const formRef = ref<FormInstance>();
-const login = () => {
-  formRef.value?.validate((valid) => {
+const loginServ = () => {
+  formRef.value?.validate((valid: boolean) => {
     if (valid) {
-      console.log("submit!");
+      login({
+        ...form.value,
+      });
     }
   });
 };

@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@koa/cors": "^4.0.0",
     "axios": "^1.5.1",
     "element-plus": "^2.4.0",
     "qiankun": "^2.10.13",
